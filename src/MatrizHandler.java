@@ -71,6 +71,75 @@ public class MatrizHandler {
         System.out.println("Valor removido com sucesso!");
     }
 
+
+
+    public void ordenarCompleta() {
+        int[] matrizGeral = new int[this.matriz.length * this.matriz[0].length];
+        int contador = 0;
+        for (int i = 0; i < this.matriz.length; i++) {
+            for (int j = 0; j < this.matriz[i].length; j++) {
+                matrizGeral[contador] = this.matriz[i][j];
+                contador++;
+            }
+        }
+
+        bubbleSort(matrizGeral);
+
+        contador = 0;
+        for (int i = 0; i < this.matriz.length; i++) {
+            for (int j = 0; j < this.matriz[i].length; j++) {
+                this.matriz[i][j] = matrizGeral[contador];
+                contador++;
+            }
+        }
+
+        printarMatriz();
+    }
+
+    public void ordenarPorLinha() {
+        for (int i = 0; i < this.matriz.length; i++) {
+            bubbleSort(this.matriz[i]);
+        }
+
+        printarMatriz();
+    }
+
+    public void ordenarPorColuna() {
+        for (int i = 0; i < this.matriz[0].length; i++) {
+            int[] matrizPorColuna = new int[this.matriz.length];
+            int contador = 0;
+            for (int j = 0; j < this.matriz.length; j++) {
+                matrizPorColuna[contador] = this.matriz[j][i];
+                contador++;
+            }
+            bubbleSort(matrizPorColuna);
+
+            contador = 0;
+            for (int j = 0; j < this.matriz.length; j++) {
+                this.matriz[j][i] = matrizPorColuna[contador];
+                contador++;
+            }
+        }
+
+        printarMatriz();
+    }
+
+
+
+    // ordenacao nao recursiva
+    public void bubbleSort(int[] arr) {
+        int n = arr.length;
+        for (int i = 0; i < n - 1; i++) {
+            for (int j = 0; j < n - i - 1; j++) {
+                if (arr[j] > arr[j + 1]) {
+                    int temp = arr[j];
+                    arr[j] = arr[j + 1];
+                    arr[j + 1] = temp;
+                }
+            }
+        }
+    }
+
     // metodo de exibicao da matriz
     public void printarMatriz() {
         String colunas = "    ";

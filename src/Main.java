@@ -11,18 +11,21 @@ public class Main {
         int numColunas = scan.nextInt();
         MatrizHandler minhaMatriz = new MatrizHandler(numLinhas, numColunas);
 
+        // FUNCIONANDO PREENCHER
+        //minhaMatriz.preencherManual();
+        //minhaMatriz.preencherAuto();
 
-        // minhaMatriz.preencherManual();
-        minhaMatriz.preencherAuto();
-
-        // FUNCIONANDO
+        // FUNCIONANDO INSERIR
         //minhaMatriz.inserirValor();
         //minhaMatriz.printarMatriz();
 
-        // FUNCIONANDO
+        // FUNCIONANDO REMOVER
         //minhaMatriz.removerValor();
         //minhaMatriz.printarMatriz();
 
-
+        // FUNCIONANDO ORDENACOES
+        //minhaMatriz.ordenarCompleta();
+        //minhaMatriz.ordenarPorLinha();
+        //minhaMatriz.ordenarPorColuna();
     }
 }
