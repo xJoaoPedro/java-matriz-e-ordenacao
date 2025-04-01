@@ -58,7 +58,6 @@ public class MatrizHandler {
         System.out.println("Valor adicionado com sucesso!");
     }
 
-    // considerei remover como tranformar em 0 por ser uma matriz de inteiros
     public void removerValor() {
         printarMatriz();
         System.out.println("Digite o numero da linha");
@@ -72,7 +71,6 @@ public class MatrizHandler {
     }
 
 
-
     public void ordenarCompleta() {
         int[] matrizGeral = new int[this.matriz.length * this.matriz[0].length];
         int contador = 0;
@@ -83,7 +81,7 @@ public class MatrizHandler {
             }
         }
 
-        bubbleSort(matrizGeral);
+        mergeSort(matrizGeral, 0, matrizGeral.length - 1);
 
         contador = 0;
         for (int i = 0; i < this.matriz.length; i++) {
@@ -125,8 +123,7 @@ public class MatrizHandler {
     }
 
 
-
-    // ordenacao nao recursiva
+    // ordenacao iterativa
     public void bubbleSort(int[] arr) {
         int n = arr.length;
         for (int i = 0; i < n - 1; i++) {
@@ -137,6 +134,61 @@ public class MatrizHandler {
                     arr[j + 1] = temp;
                 }
             }
+        }
+    }
+
+    // ordenacao recursiva
+    public void mergeSort(int[] vetor, int inicio, int fim) {
+        if (inicio < fim) {
+            int meio = (inicio + fim) / 2;
+            mergeSort(vetor, inicio, meio);
+            mergeSort(vetor, meio + 1, fim);
+            merge(vetor, inicio, meio, fim);
+        }
+    }
+
+    public void merge(int[] vetor, int inicio, int meio, int fim) {
+        // Passo 1: Determinar os tamanhos dos dois subarrays
+        int n1 = meio - inicio + 1;
+        int n2 = fim - meio;
+
+        // Passo 2: Criar arrays temporários para armazenar os subarrays
+        int[] esquerda = new int[n1];
+        int[] direita = new int[n2];
+
+        // Passo 3: Copiar os dados para os arrays temporários
+        for (int i = 0; i < n1; i++)
+            esquerda[i] = vetor[inicio + i];
+        for (int j = 0; j < n2; j++)
+            direita[j] = vetor[meio + 1 + j];
+
+        // Passo 4: Mesclar os arrays temporários de volta no array original
+
+        int i = 0, j = 0;
+        int k = inicio;
+        while (i < n1 && j < n2) {
+            if (esquerda[i] <= direita[j]) {
+                vetor[k] = esquerda[i];
+                i++;
+            } else {
+                vetor[k] = direita[j];
+                j++;
+            }
+            k++;
+        }
+
+        // Passo 5: Copiar os elementos restantes de esquerda[], se houver
+        while (i < n1) {
+            vetor[k] = esquerda[i];
+            i++;
+            k++;
+        }
+
+        // Passo 6: Copiar os elementos restantes de direita[], se houver
+        while (j < n2) {
+            vetor[k] = direita[j];
+            j++;
+            k++;
         }
     }
 
