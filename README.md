@@ -9,7 +9,9 @@
 - <a href="#algOrd">**2. Algoritmos de ordenação**</a>
     - <a href="#bbs">**2.1. Bubble Sort**</a>
     - <a href="#mSort">**2.2. Merge Sort**</a>
-- Estrutura do código
+- <a href="#codigo">**Estrutura do código**</a>
+    - <a href="#mHandler">**MatrizHandler**</a>
+    - <a href="#mainExec">**Main (execução)**</a>
 <hr>
 <div id="matrizbi" align="center">
 <img src="resources/matrizbi.gif" width="380px" height="180px">
@@ -197,3 +199,198 @@ public static void mergeSort(int[] vetor, int inicio, int fim) {
 ### Estrutura do código
 </div>
 
+<div id="mHandler">
+
+## Classe MatrizHandler
+</div>
+
+### **Métodos de funcionamento da classe**
+
+---
+#### **Construtor:** 
+O construtor da classe pede um inteiro para o numero de linhas e para o numero de colunas da matriz.
+
+---
+#### **preencherManual()**
+Itera com dois loops for aninhados todos os elementos da matriz, informando a posição e pedindo o valor que deseja atribuir à posição.
+
+---
+#### **preencherAuto()**
+Itera com dois loops for aninhados todos os elementos da matriz, atribuindo à posição um valor aleatório entre 1 e 100.
+
+---
+#### **inserirValor()**
+Usa o <a href="#printarMatriz">método auxiliar _printarMatriz()_</a> para exibir o estado atual da matriz, e em seguida coleta os valores de linha, coluna e do valor novo (fazendo as verificações com o <a href="#verificaValor">método auxiliar _verificaValor()_</a>), para poder atribuir o valor novo na posição correta.
+
+---
+#### **removerValor()**
+Funciona semelhante ao método anterior, exceto que não coleta um novo valor, apenas posição de linha e coluna, e troca o valor no lugar por 0.
+
+---
+#### **ordenarCompleta()**
+Esse método utiliza o <a href="#merge">método de ordenação Merge Sort</a> para ordenar a matriz como se fosse uma unica lista inteira.
+
+Exemplo:
+<div style="display:flex; justify-content:space-evenly;">
+<div>
+
+matriz desordenada
+|   | 0  | 1  | 2  | 3  |
+|---|----|----|----|----|
+| 0 | 53 | 93 | 33 | 17 |
+| 1 | 75 | 96 | 13 | 68 |
+| 2 | 86 | 66 | 52 |  3 |
+| 3 | 94 |  7 | 49 | 61 |
+
+</div>
+<div>
+
+matriz ordenada completa
+|   | 0  | 1  | 2  | 3  |
+|---|----|----|----|----|
+| 0 |  3 |  7 | 13 | 17 |
+| 1 | 33 | 49 | 52 | 53 |
+| 2 | 61 | 66 | 68 | 75 |
+| 3 | 86 | 93 | 94 | 96 |
+</div>
+</div>
+
+---
+#### **ordenarPorLinha()**
+Esse método utiliza o <a href="#bubble">método de ordenação Bubble Sort</a> para ordenar a matriz por linhas.
+
+Exemplo:
+<div style="display:flex; justify-content:space-evenly;">
+<div>
+
+matriz desordenada
+|   | 0  | 1  | 2  | 3  |
+|---|----|----|----|----|
+| 0 | 53 | 93 | 33 | 17 |
+| 1 | 75 | 96 | 13 | 68 |
+| 2 | 86 | 66 | 52 |  3 |
+| 3 | 94 |  7 | 49 | 61 |
+
+</div>
+<div>
+
+matriz ordenada por linha
+|   | 0  | 1  | 2  | 3  |
+|---|----|----|----|----|
+| 0 | 17 | 33 | 53 | 93 |
+| 1 | 13 | 68 | 75 | 96 |
+| 2 |  3 | 52 | 66 | 86 |
+| 3 |  7 | 49 | 61 | 94 |
+</div>
+</div>
+
+---
+#### **ordenarPorLinha()**
+Esse método utiliza o <a href="#bubble">método de ordenação Bubble Sort</a> para ordenar a matriz por linhas.
+
+Exemplo:
+<div style="display:flex; justify-content:space-evenly;">
+<div>
+
+matriz desordenada
+|   | 0  | 1  | 2  | 3  |
+|---|----|----|----|----|
+| 0 | 53 | 93 | 33 | 17 |
+| 1 | 75 | 96 | 13 | 68 |
+| 2 | 86 | 66 | 52 |  3 |
+| 3 | 94 |  7 | 49 | 61 |
+
+</div>
+<div>
+
+matriz ordenada por linha
+|   | 0  | 1  | 2  | 3  |
+|---|----|----|----|----|
+| 0 | 17 | 33 | 53 | 93 |
+| 1 | 13 | 68 | 75 | 96 |
+| 2 |  3 | 52 | 66 | 86 |
+| 3 |  7 | 49 | 61 | 94 |
+</div>
+</div>
+
+---
+#### **ordenarPorColuna()**
+Esse método utiliza o <a href="#bubble">método de ordenação Bubble Sort</a> para ordenar a matriz por colunas.
+
+Exemplo:
+<div style="display:flex; justify-content:space-evenly;">
+<div>
+
+matriz desordenada
+|   | 0  | 1  | 2  | 3  |
+|---|----|----|----|----|
+| 0 | 53 | 93 | 33 | 17 |
+| 1 | 75 | 96 | 13 | 68 |
+| 2 | 86 | 66 | 52 |  3 |
+| 3 | 94 |  7 | 49 | 61 |
+
+</div>
+<div>
+
+matriz ordenada por coluna
+|   | 0  | 1  | 2  | 3  |
+|---|----|----|----|----|
+| 0 | 53 |  7 | 13 |  3 |
+| 1 | 75 | 66 | 33 | 17 |
+| 2 | 86 | 93 | 49 | 61 |
+| 3 | 94 | 96 | 52 | 68 |
+</div>
+</div>
+
+---
+### **Métodos de ordenação usados**
+<div id="bubble">
+
+---
+#### **bubbleSort()**
+Implementação da <a href="#bbs">ordenação _Bubble Sort_</a> para ser utilizada por outros métodos, recebendo um array de inteiros.
+</div>
+
+<div id="merge">
+
+---
+#### **mergeSort() e merge()**
+Implementação da <a href="#mSort">ordenação _Merge Sort_</a> para ser utilizada por outros métodos, recebendo um array de inteiros, um inteiro de início e um inteiro de fim em ambas funções.
+</div>
+
+---
+### **Métodos auxiliares**
+
+<div id="printarMatriz">
+
+---
+#### **printarMatriz()**
+Utilizado quando necessário printar a matriz no console, modela o print para deixar a mesma mais legível.
+
+Exemplo de print:
+
+<img src="resources/printExemp.jpg">
+
+</div>
+
+<div id="verificaValor">
+
+---
+#### **verificaValor()**
+O método recebe os valores de string da posição a ser verificada e o valor.
+Dentro da função, de acordo com a posição, ele faz as devidas verificações e retorna o valor quando estiver dentro dos parametros:
+- **Linha:** precisa estar entre 0 e o tamanho da matriz.
+- **Coluna:** precisa estar entre 0 e o tamanho do primeiro elemento (pois todos tem o mesmo tamanho, e o primeiro sempre existe).
+- **Valor**: deve estar entre 0 e 100, pois são os valores que podem ser inseridos na matriz.
+
+</div>
+
+<div id="mainExec">
+
+## Classe main (execução)
+Inicializa a execução, criando um Scanner para ler os valores de tamanho da matriz (linhas e colunas), após isso, instancia uma matriz.
+
+Estão comentados os métodos existentes e utilizáveis da MatrizHandler.
+
+**OBS.: PARA UTILIZAR OS MÉTODOS DE INSERIR, REMOVER E ORDENAR, É NECESSÁRIO ANTES UTILIZAR ALGUM DOS MÉTODOS DE PREENCHER.**
+</div>

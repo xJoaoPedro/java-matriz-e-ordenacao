@@ -15,7 +15,7 @@ public class MatrizHandler {
         for (int i = 0; i < this.matriz.length; i++) {
             for (int j = 0; j < this.matriz[i].length; j++) {
                 System.out.println("Digite o valor para o item " + i + "x" + j + ":");
-                this.matriz[i][j] = this.scan.nextInt();
+                this.matriz[i][j] = verificaValor("valor", this.scan.nextInt());
             }
         }
     }
@@ -31,28 +31,13 @@ public class MatrizHandler {
     public void inserirValor() {
         printarMatriz();
         System.out.println("Digite o numero da linha");
-        int linha = scan.nextInt();
-        // verificador para o valor da linha
-        while (linha < 0 || linha >= this.matriz.length) {
-            System.out.println("Linha inexistente, digite uma linha entre 0 e " + (this.matriz.length - 1));
-            linha = scan.nextInt();
-        }
+        int linha = verificaValor("linha", this.scan.nextInt());
 
         System.out.println("Digite o numero da coluna");
-        int coluna = scan.nextInt();
-        // verificador para o valor da coluna
-        while (coluna < 0 || coluna >= this.matriz[0].length) {
-            System.out.println("Coluna inexistente, digite uma coluna entre 0 e " + (this.matriz[0].length - 1));
-            coluna = scan.nextInt();
-        }
+        int coluna = verificaValor("coluna", this.scan.nextInt());
 
         System.out.println("Digite o valor novo:");
-        int valor = scan.nextInt();
-        while (valor < 0 || valor > 100) {
-            System.out.println("Valor inválido, digite outro:");
-            valor = scan.nextInt();
-        }
-
+        int valor = verificaValor("valor", this.scan.nextInt());
 
         this.matriz[linha][coluna] = valor;
         System.out.println("Valor adicionado com sucesso!");
@@ -214,12 +199,18 @@ public class MatrizHandler {
                 valor = scan.nextInt();
             }
             return valor;
+        } else if (posicao == "coluna") {
+            while (valor < 0 || valor >= this.matriz[0].length) {
+                System.out.println("Coluna inexistente, digite uma coluna entre 0 e " + (this.matriz[0].length - 1));
+                valor = scan.nextInt();
+            }
+            return valor;
+        } else {
+            while (valor < 0 || valor > 100) {
+                System.out.println("Valor inválido, digite um valor entre 0 e 100");
+                valor = scan.nextInt();
+            }
+            return valor;
         }
-
-        while (valor < 0 || valor >= this.matriz[0].length) {
-            System.out.println("Coluna inexistente, digite uma coluna entre 0 e " + (this.matriz[0].length - 1));
-            valor = scan.nextInt();
-        }
-        return valor;
     }
 }
